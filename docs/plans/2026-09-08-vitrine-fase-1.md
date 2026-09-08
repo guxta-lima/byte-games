@@ -1036,7 +1036,7 @@ git commit -m "Gera derivadas responsivas em WebP sem ampliar imagem pequena"
 - Produces: a rota `/imagens/{arquivo}`, que a Task 9 usa para montar `src` e
   `srcset`.
 
-- [ ] **Step 1: Escrever o teste que falha**
+- [x] **Step 1: Escrever o teste que falha**
 
 Criar `src/test/java/loja/bytegames/config/ServirImagensTest.java`:
 
@@ -1098,7 +1098,7 @@ class ServirImagensTest {
 }
 ```
 
-- [ ] **Step 2: Rodar para confirmar que falha**
+- [x] **Step 2: Rodar para confirmar que falha**
 
 ```bash
 ./mvnw test -Dtest=ServirImagensTest
@@ -1106,7 +1106,7 @@ class ServirImagensTest {
 
 Esperado: FALHA — `/imagens/**` devolve 404 porque nada serve essa rota hoje.
 
-- [ ] **Step 3: Escrever a configuração**
+- [x] **Step 3: Escrever a configuração**
 
 Criar `src/main/java/loja/bytegames/config/ConfiguracaoRecursosWeb.java`:
 
@@ -1148,7 +1148,7 @@ public class ConfiguracaoRecursosWeb implements WebMvcConfigurer {
 }
 ```
 
-- [ ] **Step 4: Declarar a propriedade no perfil padrão**
+- [x] **Step 4: Declarar a propriedade no perfil padrão**
 
 Ao fim de `src/main/resources/application.properties`:
 
@@ -1157,7 +1157,7 @@ Ao fim de `src/main/resources/application.properties`:
 bytegames.uploads.diretorio=uploads
 ```
 
-- [ ] **Step 5: Rodar para confirmar que passa**
+- [x] **Step 5: Rodar para confirmar que passa**
 
 ```bash
 ./mvnw test -Dtest=ServirImagensTest
@@ -1165,7 +1165,7 @@ bytegames.uploads.diretorio=uploads
 
 Esperado: PASSA, 3 testes.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/main/java/loja/bytegames/config/ConfiguracaoRecursosWeb.java src/main/resources/application.properties src/test/java/loja/bytegames/config/ServirImagensTest.java

@@ -296,7 +296,7 @@ a que decide, e o teste é o árbitro.
 - Produces: a garantia de que `ImageIO.write(imagem, "webp", arquivo)` funciona
   nesta máquina. A Task 6 depende disso.
 
-- [ ] **Step 1: Escrever o teste que falha**
+- [x] **Step 1: Escrever o teste que falha**
 
 Criar `src/test/java/loja/bytegames/service/CodificacaoWebpTest.java`:
 
@@ -332,7 +332,7 @@ class CodificacaoWebpTest {
 }
 ```
 
-- [ ] **Step 2: Rodar para confirmar que falha**
+- [x] **Step 2: Rodar para confirmar que falha**
 
 ```bash
 ./mvnw test -Dtest=CodificacaoWebpTest
@@ -341,7 +341,7 @@ class CodificacaoWebpTest {
 Esperado: FALHA com "Nenhum writer de WebP registrado no ImageIO" — o JDK 17 não
 traz encoder WebP.
 
-- [ ] **Step 3: Adicionar as dependências**
+- [x] **Step 3: Adicionar as dependências**
 
 Em `pom.xml`, dentro de `<dependencies>`, acrescentar:
 
@@ -363,7 +363,7 @@ nativa para Windows, Linux e macOS — nada a instalar na máquina. Thumbnailato
 faz o redimensionamento e escreve através do ImageIO, então as duas se
 encaixam sem código de cola.
 
-- [ ] **Step 4: Rodar para confirmar que passa**
+- [x] **Step 4: Rodar para confirmar que passa**
 
 ```bash
 ./mvnw test -Dtest=CodificacaoWebpTest
@@ -378,7 +378,7 @@ spec já autorizou o fallback: seguir sem WebP, entregando apenas JPEG
 redimensionado nas três larguras, e registrar a decisão no topo de
 `ArmazenamentoImagemService`. As Tasks 6 e 10 têm o caminho alternativo marcado.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add pom.xml src/test/java/loja/bytegames/service/CodificacaoWebpTest.java

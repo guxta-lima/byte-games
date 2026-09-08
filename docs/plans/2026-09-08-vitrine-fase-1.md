@@ -626,7 +626,7 @@ git commit -m "Mapeia campo imagem do produto e preserva capa na edicao sem uplo
     estática, com `getMessage()` legível para exibir ao usuário.
   - Constante pública `LARGURAS = {400, 800, 1200}`.
 
-- [ ] **Step 1: Escrever o teste que falha**
+- [x] **Step 1: Escrever o teste que falha**
 
 Criar `src/test/java/loja/bytegames/service/ArmazenamentoImagemServiceTest.java`:
 
@@ -733,7 +733,7 @@ class ArmazenamentoImagemServiceTest {
 }
 ```
 
-- [ ] **Step 2: Rodar para confirmar que falha**
+- [x] **Step 2: Rodar para confirmar que falha**
 
 ```bash
 ./mvnw test -Dtest=ArmazenamentoImagemServiceTest
@@ -741,7 +741,7 @@ class ArmazenamentoImagemServiceTest {
 
 Esperado: FALHA de compilação — a classe não existe.
 
-- [ ] **Step 3: Escrever o serviço**
+- [x] **Step 3: Escrever o serviço**
 
 Criar `src/main/java/loja/bytegames/service/ArmazenamentoImagemService.java`:
 
@@ -884,7 +884,7 @@ public class ArmazenamentoImagemService {
 }
 ```
 
-- [ ] **Step 4: Rodar para confirmar que passa**
+- [x] **Step 4: Rodar para confirmar que passa**
 
 ```bash
 ./mvnw test -Dtest=ArmazenamentoImagemServiceTest
@@ -892,7 +892,7 @@ public class ArmazenamentoImagemService {
 
 Esperado: PASSA, 5 testes.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/main/java/loja/bytegames/service/ArmazenamentoImagemService.java src/test/java/loja/bytegames/service/ArmazenamentoImagemServiceTest.java

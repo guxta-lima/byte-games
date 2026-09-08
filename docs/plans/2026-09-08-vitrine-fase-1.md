@@ -116,14 +116,14 @@ plano precisa resolver:
 - Produces: o arquivo `docs/specs/medicoes-desempenho.md` com a seção
   "Linha de base", que as Tasks 13 e a Fase 2 vão acrescentar linhas.
 
-- [ ] **Step 1: Criar o branch de trabalho**
+- [x] **Step 1: Criar o branch de trabalho**
 
 ```bash
 cd /c/dev/pessoal/byte-games
 git checkout -b vitrine-capa-e-movimento
 ```
 
-- [ ] **Step 2: Criar o perfil de medição**
+- [x] **Step 2: Criar o perfil de medição**
 
 Criar `src/main/resources/application-prod.properties`:
 
@@ -136,7 +136,7 @@ spring.jpa.show-sql=false
 spring.jpa.properties.hibernate.format_sql=false
 ```
 
-- [ ] **Step 3: Subir a aplicação no perfil de medição**
+- [x] **Step 3: Subir a aplicação no perfil de medição**
 
 ```bash
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=prod
@@ -148,7 +148,7 @@ descomentar o bloco H2 em `application.properties` antes desta medição e usar 
 mesmo banco nas duas medições (linha de base e pós-fase), senão a comparação não
 vale.
 
-- [ ] **Step 4: Medir e registrar**
+- [x] **Step 4: Medir e registrar**
 
 Com a aplicação de pé, rodar Lighthouse em `/` e em `/produto/1`, modo mobile,
 e registrar em `docs/specs/medicoes-desempenho.md`:
@@ -177,7 +177,7 @@ Preencher a tabela com os valores medidos. **Não seguir para a Task 2 com a
 tabela vazia** — sem esta linha de base, nenhuma afirmação de ganho no resto do
 plano é verificável.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/main/resources/application-prod.properties docs/specs/medicoes-desempenho.md
@@ -201,7 +201,7 @@ mudar isso não é objetivo desta fase.
 - Produces: o perfil Spring `test`, usado por `@ActiveProfiles("test")` em todos
   os testes criados nas Tasks 5, 6, 8 e 10.
 
-- [ ] **Step 1: Escrever o teste que falha**
+- [x] **Step 1: Escrever o teste que falha**
 
 Criar `src/test/java/loja/bytegames/PerfilDeTesteTest.java`:
 
@@ -232,7 +232,7 @@ class PerfilDeTesteTest {
 }
 ```
 
-- [ ] **Step 2: Rodar para confirmar que falha**
+- [x] **Step 2: Rodar para confirmar que falha**
 
 ```bash
 ./mvnw test -Dtest=PerfilDeTesteTest
@@ -242,7 +242,7 @@ Esperado: FALHA. Sem o arquivo de perfil, o Spring tenta o MySQL do
 `application.properties` e quebra na conexão (ou nas variáveis `DB_USER` /
 `DB_PASSWORD` ausentes).
 
-- [ ] **Step 3: Criar o perfil de teste**
+- [x] **Step 3: Criar o perfil de teste**
 
 Criar `src/test/resources/application-test.properties`:
 
@@ -262,7 +262,7 @@ spring.thymeleaf.cache=false
 bytegames.uploads.diretorio=target/uploads-teste
 ```
 
-- [ ] **Step 4: Rodar para confirmar que passa**
+- [x] **Step 4: Rodar para confirmar que passa**
 
 ```bash
 ./mvnw test -Dtest=PerfilDeTesteTest
@@ -270,7 +270,7 @@ bytegames.uploads.diretorio=target/uploads-teste
 
 Esperado: PASSA.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/test/resources/application-test.properties src/test/java/loja/bytegames/PerfilDeTesteTest.java

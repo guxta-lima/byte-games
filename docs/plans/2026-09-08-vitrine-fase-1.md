@@ -913,7 +913,7 @@ git commit -m "Adiciona servico de armazenamento de imagem com validacao por ass
   `X-400.webp`, `X-800.webp` e `X-1200.webp`. A Task 9 monta o `srcset` a partir
   exatamente desses nomes.
 
-- [ ] **Step 1: Escrever o teste que falha**
+- [x] **Step 1: Escrever o teste que falha**
 
 Acrescentar a `ArmazenamentoImagemServiceTest`:
 
@@ -946,7 +946,7 @@ Acrescentar a `ArmazenamentoImagemServiceTest`:
     }
 ```
 
-- [ ] **Step 2: Rodar para confirmar que falha**
+- [x] **Step 2: Rodar para confirmar que falha**
 
 ```bash
 ./mvnw test -Dtest=ArmazenamentoImagemServiceTest
@@ -954,7 +954,7 @@ Acrescentar a `ArmazenamentoImagemServiceTest`:
 
 Esperado: FALHA nos dois testes novos — nenhuma derivada é gerada ainda.
 
-- [ ] **Step 3: Gerar as derivadas**
+- [x] **Step 3: Gerar as derivadas**
 
 Em `ArmazenamentoImagemService`, acrescentar os imports:
 
@@ -1007,7 +1007,7 @@ nesta plataforma: trocar `.outputFormat("webp")` por `.outputFormat("jpg")` e
 acima para esperar `.jpg`. O resto do plano segue igual; muda só a extensão que
 a Task 9 monta no `srcset`, e o `<source type="image/webp">` sai do fragment.
 
-- [ ] **Step 4: Rodar para confirmar que passa**
+- [x] **Step 4: Rodar para confirmar que passa**
 
 ```bash
 ./mvnw test -Dtest=ArmazenamentoImagemServiceTest
@@ -1015,7 +1015,7 @@ a Task 9 monta no `srcset`, e o `<source type="image/webp">` sai do fragment.
 
 Esperado: PASSA, 7 testes.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/main/java/loja/bytegames/service/ArmazenamentoImagemService.java src/test/java/loja/bytegames/service/ArmazenamentoImagemServiceTest.java

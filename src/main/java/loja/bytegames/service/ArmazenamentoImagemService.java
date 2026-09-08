@@ -1,9 +1,12 @@
 package loja.bytegames.service;
 
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -67,7 +70,34 @@ public class ArmazenamentoImagemService {
         } catch (IOException e) {
             throw new ImagemInvalidaException("Nao foi possivel gravar a imagem.");
         }
+        gerarDerivadas(nomeBase, formato);
         return nomeBase;
+    }
+
+    /**
+     * Gera as versoes responsivas em WebP. Larguras maiores que a imagem
+     * original sao puladas -- ampliar so produz arquivo maior e mais borrado.
+     */
+    private void gerarDerivadas(String nomeBase, Formato formato) {
+        Path original = diretorio.resolve(nomeBase + formato.extensao);
+        try {
+            BufferedImage imagem = ImageIO.read(original.toFile());
+            if (imagem == null) {
+                throw new ImagemInvalidaException("Nao foi possivel ler a imagem enviada.");
+            }
+            for (int largura : LARGURAS) {
+                if (imagem.getWidth() < largura) {
+                    continue;
+                }
+                Path destino = diretorio.resolve(nomeBase + "-" + largura + ".webp");
+                Thumbnails.of(imagem)
+                        .width(largura)
+                        .outputFormat("webp")
+                        .toFile(destino.toFile());
+            }
+        } catch (IOException e) {
+            throw new ImagemInvalidaException("Nao foi possivel processar a imagem.");
+        }
     }
 
     /** Apaga o original e todas as derivadas de um nome-base. */

@@ -97,4 +97,31 @@ class ArmazenamentoImagemServiceTest {
         assertTrue(!pastaTemporaria.resolve(nomeBase + ".jpg").toFile().exists(),
                 "Original deveria ter sido apagado");
     }
+
+    @Test
+    void geraAsTresDerivadasEmWebp() throws Exception {
+        MockMultipartFile bom = new MockMultipartFile(
+                "imagem", "capa.jpg", "image/jpeg", jpegValido(1600, 900));
+
+        String nomeBase = servico().guardar(bom);
+
+        for (int largura : ArmazenamentoImagemService.LARGURAS) {
+            assertTrue(pastaTemporaria.resolve(nomeBase + "-" + largura + ".webp").toFile().exists(),
+                    "Derivada de " + largura + "px deveria existir");
+        }
+    }
+
+    @Test
+    void naoAmpliaImagemMenorQueALarguraAlvo() throws Exception {
+        // Uma capa de 500px nao deve virar um arquivo de 1200px borrado.
+        MockMultipartFile pequena = new MockMultipartFile(
+                "imagem", "pequena.jpg", "image/jpeg", jpegValido(500, 300));
+
+        String nomeBase = servico().guardar(pequena);
+
+        assertTrue(pastaTemporaria.resolve(nomeBase + "-400.webp").toFile().exists(),
+                "Derivada de 400px cabe e deveria existir");
+        assertTrue(!pastaTemporaria.resolve(nomeBase + "-1200.webp").toFile().exists(),
+                "Derivada de 1200px ampliaria a imagem e nao deveria existir");
+    }
 }

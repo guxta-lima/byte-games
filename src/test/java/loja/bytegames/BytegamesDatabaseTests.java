@@ -35,7 +35,8 @@ class BytegamesDatabaseTests {
                 "Um produto temporário para testar banco",
                 new BigDecimal("99.99"),
                 5,
-                categoria.getId()
+                categoria.getId(),
+                null // sem capa neste teste
         );
 
         Produto novoProduto = produtoRepository.findByNomeContainingIgnoreCase("Jogo Teste Automatizado")
@@ -57,7 +58,8 @@ class BytegamesDatabaseTests {
                 produtoBuscado.getDescricao(),
                 novoPreco,
                 produtoBuscado.getEstoque(),
-                categoria.getId()
+                categoria.getId(),
+                null // sem capa neste teste
                 
         );
         

@@ -32,6 +32,11 @@ public class Produto {
     @NotNull(message = "O estoque é obrigatório")
     private Integer estoque;
 
+    // Nome-base do arquivo de capa, sem extensao e sem caminho. Nulo e estado
+    // valido: produto sem capa cai no placeholder da categoria.
+    @Column(length = 255)
+    private String imagem;
+
     // @ManyToOne indica que vários produtos pertencem a uma única Categoria
     // @JoinColumn define a coluna de chave estrangeira que une as duas tabelas
     @ManyToOne(fetch = FetchType.LAZY)
@@ -81,6 +86,14 @@ public class Produto {
 
     public void setEstoque(Integer estoque) {
         this.estoque = estoque;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public Categoria getCategoria() {

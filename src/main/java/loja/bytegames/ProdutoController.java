@@ -59,7 +59,8 @@ public class ProdutoController {
             produto.getDescricao(),
             produto.getPreco(),
             produto.getEstoque(),
-            produto.getCategoria().getId()
+            produto.getCategoria().getId(),
+            null // capa ainda nao enviada pelo formulario
         );
 
         // Redireciona o navegador de volta para a lista geral de produtos
@@ -107,7 +108,8 @@ public class ProdutoController {
             produto.getDescricao(),
             produto.getPreco(),
             produto.getEstoque(),
-            produto.getCategoria().getId()
+            produto.getCategoria().getId(),
+            null // capa ainda nao enviada pelo formulario
         );
 
         return "redirect:/produtos";

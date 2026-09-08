@@ -406,7 +406,7 @@ git commit -m "Adiciona Thumbnailator e encoder WebP com teste de plataforma"
     BigDecimal preco, Integer estoque, Long categoriaId, String imagem)` — com
     a regra de que **`imagem == null` preserva a imagem existente**.
 
-- [ ] **Step 1: Escrever o teste que falha**
+- [x] **Step 1: Escrever o teste que falha**
 
 Criar `src/test/java/loja/bytegames/ProdutoImagemPersistenciaTest.java`:
 
@@ -503,7 +503,7 @@ class ProdutoImagemPersistenciaTest {
 }
 ```
 
-- [ ] **Step 2: Rodar para confirmar que falha**
+- [x] **Step 2: Rodar para confirmar que falha**
 
 ```bash
 ./mvnw test -Dtest=ProdutoImagemPersistenciaTest
@@ -512,7 +512,7 @@ class ProdutoImagemPersistenciaTest {
 Esperado: FALHA de compilação — `inserirProduto` não aceita 6 argumentos e
 `getImagem()` não existe.
 
-- [ ] **Step 3: Adicionar o campo na entidade**
+- [x] **Step 3: Adicionar o campo na entidade**
 
 Em `Produto.java`, depois do campo `estoque` e antes do bloco `@ManyToOne`:
 
@@ -535,7 +535,7 @@ E, junto dos demais getters e setters:
     }
 ```
 
-- [ ] **Step 4: Atualizar os métodos do repositório**
+- [x] **Step 4: Atualizar os métodos do repositório**
 
 Em `ProdutoRepository.java`, substituir `inserirProduto` e `atualizarProduto`
 pelas versões abaixo. Note a diferença de regra entre as duas: na inserção,
@@ -586,14 +586,14 @@ que já está lá".
     }
 ```
 
-- [ ] **Step 5: Ajustar as chamadas existentes no controller**
+- [x] **Step 5: Ajustar as chamadas existentes no controller**
 
 `ProdutoController` ainda chama as assinaturas antigas e não compila. Ajuste
 mínimo por enquanto — a Task 8 é que traz o upload de verdade. Em
 `salvarNovo`, acrescentar `null` como último argumento de `inserirProduto`; em
 `atualizar`, acrescentar `null` como último argumento de `atualizarProduto`.
 
-- [ ] **Step 6: Rodar para confirmar que passa**
+- [x] **Step 6: Rodar para confirmar que passa**
 
 ```bash
 ./mvnw test -Dtest=ProdutoImagemPersistenciaTest
@@ -601,7 +601,7 @@ mínimo por enquanto — a Task 8 é que traz o upload de verdade. Em
 
 Esperado: PASSA, 4 testes.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add src/main/java/loja/bytegames/Produto.java src/main/java/loja/bytegames/repository/ProdutoRepository.java src/main/java/loja/bytegames/ProdutoController.java src/test/java/loja/bytegames/ProdutoImagemPersistenciaTest.java

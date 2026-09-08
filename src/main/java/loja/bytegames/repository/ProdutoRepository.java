@@ -25,13 +25,15 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
         return findById(id);
     }
 
-    // Método personalizado para criar um novo produto e associar sua categoria
-    default void inserirProduto(String nome, String descricao, BigDecimal preco, Integer estoque, Long categoriaId) {
+    // Metodo personalizado para criar um novo produto e associar sua categoria
+    default void inserirProduto(String nome, String descricao, BigDecimal preco,
+                                Integer estoque, Long categoriaId, String imagem) {
         Produto produto = new Produto();
         produto.setNome(nome);
         produto.setDescricao(descricao);
         produto.setPreco(preco);
         produto.setEstoque(estoque);
+        produto.setImagem(imagem);
 
         // Cria a categoria apenas com o ID informado
         Categoria categoria = new Categoria();
@@ -42,20 +44,25 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
         save(produto);
     }
 
-    // Método personalizado para atualizar um produto existente
-    default void atualizarProduto(Long id, String nome, String descricao, BigDecimal preco, Integer estoque, Long categoriaId) {
-        // Busca o produto pelo ID no banco de dados
+    // Metodo personalizado para atualizar um produto existente.
+    // imagem nula significa "manter a capa atual" -- editar um produto sem
+    // enviar arquivo novo nao pode apagar a capa que ja existe.
+    default void atualizarProduto(Long id, String nome, String descricao, BigDecimal preco,
+                                  Integer estoque, Long categoriaId, String imagem) {
         findById(id).ifPresent(produto -> {
             produto.setNome(nome);
             produto.setDescricao(descricao);
             produto.setPreco(preco);
             produto.setEstoque(estoque);
+            if (imagem != null) {
+                produto.setImagem(imagem);
+            }
 
             Categoria categoria = new Categoria();
             categoria.setId(categoriaId);
             produto.setCategoria(categoria);
 
-            // Grava as atualizações de volta no banco
+            // Grava as atualizacoes de volta no banco
             save(produto);
         });
     }
